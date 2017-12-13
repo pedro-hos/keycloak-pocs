@@ -1,0 +1,3 @@
+br/com/pedrohos/keycloak/activator/ResourceActivator.class
+br/com/pedrohos/keycloak/resources/HelloResource.class
+br/com/pedrohos/keycloak/resources/Message.class

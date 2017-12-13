@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Livraria</title>
+	
+	<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/keycloak.js"></script>
+	<script src="js/app.js"></script>
+</head>
+
+<body>
+
+	<div class="container">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li id="_login"><a onclick="keycloak.login()">Login</a></li>
+          <li id="_logout"><a onclick="keycloak.logout()">Logout</a></li>
+          <li id="_account"><a onclick="keycloak.accountManagement()">Account</a></li>
+        </ul>
+        <h3 class="muted">Livraria</h3>
+      </div>
+
+      <hr>
+      
+      <div class="row-fluid">
+      	<p class="span12" id="message"></p>
+      </div>
+
+		<div class="row-fluid">
+			<div class="span12">
+			
+				<table class="table table-striped">
+					<caption>Livros</caption>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Título</th>
+							<th>Descrição</th>
+							<th>Autor</th>
+							<th id="_acao">Ação</th>
+						</tr>
+					</thead>
+					<tbody id="tblLivros"></tbody>
+				</table>
+			
+			</div>
+			
+		</div>
+		
+		<div class="row-fluid"  id="_campos">
+			<div class="span2"></div>
+			
+			<div class="span8">
+				
+				<form class="form-horizontal">
+					<div class="control-group">
+						<label class="control-label" for="_titulo">Título</label>
+						<div class="controls">
+							<input type="text" placeholder="título" id="_titulo" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="_descricao">Descrição</label>
+						<div class="controls">
+							<input type="text" placeholder="descrição" id="_descricao" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<label class="control-label" for="_autor">Autor</label>
+						<div class="controls">
+							<input type="text" placeholder="autor" id="_autor" />
+						</div>
+					</div>
+					
+					<div class="control-group">
+						<div class="controls">
+							<button class="btn btn-primary" type="button" onclick="salvar()">
+								<i class=" icon-download-alt icon-white"></i> Salvar
+							</button>
+							
+							<button class="btn btn-danger" type="button" onclick="limpar()">
+								<i class=" icon-remove-circle icon-white"></i> Cancela
+							</button>
+						</div>
+					</div>
+					
+				</form>
+			</div>
+			
+			<div class="span2"></div>
+		</div>
+
+		<hr>
+
+      <div class="footer">
+        <p>© Company 2018</p>
+      </div>
+
+    </div>
+    
+</body>
+
+</html>

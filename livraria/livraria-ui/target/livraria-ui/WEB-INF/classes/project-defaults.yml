@@ -1,0 +1,7 @@
+swarm:
+  port:
+    offset: 300
+  deployment:
+    livraria-ui.war:
+      jaxrs:
+        application-path: /api
