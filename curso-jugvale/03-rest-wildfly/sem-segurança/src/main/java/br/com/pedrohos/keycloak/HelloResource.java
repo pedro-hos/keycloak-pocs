@@ -28,6 +28,6 @@ public class HelloResource {
     @Path("admin")
     public Response getAdmin() {
     	return Response.ok().entity(new Message("admin")).build();
-}
+    }
 
 }

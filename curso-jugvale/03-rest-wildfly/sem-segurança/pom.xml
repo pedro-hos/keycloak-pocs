@@ -16,6 +16,7 @@
 		<version.wildfly.maven.plugin>1.0.2.Final</version.wildfly.maven.plugin>
 		<version.surefire.plugin>2.10</version.surefire.plugin>
 		<version.war.plugin>2.1.1</version.war.plugin>
+		<version.keycloak>6.0.1</version.keycloak>
 	</properties>
 
 	<dependencyManagement>
@@ -27,7 +28,6 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-			
 		</dependencies>			
 		</dependencyManagement>
 
