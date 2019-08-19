@@ -1,8 +1,0 @@
-com/redhat/resteasyclient/services/TokenService.class
-com/redhat/resteasyclient/Controller.class
-com/redhat/resteasyclient/Servlet.class
-com/redhat/resteasyclient/Main.class
-com/redhat/resteasyclient/pojo/AccessTokenResponse.class
-com/redhat/resteasyclient/rest/ResourceActivator.class
-com/redhat/resteasyclient/TokenManager.class
-com/redhat/resteasyclient/RestTest.class

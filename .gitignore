@@ -1,44 +1,35 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# compiled output
-/dist
-/dist-server
-/tmp
-/out-tsc
-
-# dependencies
-/node_modules
-
-# IDEs and editors
-/.idea
+# Eclipse
 .project
 .classpath
-.c9/
-*.launch
 .settings/
-*.sublime-workspace
+bin/
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
+# IntelliJ
+.idea
+*.ipr
+*.iml
+*.iws
 
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
+# NetBeans
+nb-configuration.xml
 
-# e2e
-/e2e/*.js
-/e2e/*.map
+# Visual Studio Code
+.vscode
 
-# System Files
+# OSX
 .DS_Store
-Thumbs.db
+
+# Vim
+*.swp
+*.swo
+
+# patch
+*.orig
+*.rej
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
