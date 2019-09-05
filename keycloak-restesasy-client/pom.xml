@@ -86,14 +86,14 @@
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jackson2-provider</artifactId>
-			<scope>provided</scope>
+<!--			<scope>provided</scope>-->
 			<version>3.6.1.SP2</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-client</artifactId>
-			<scope>provided</scope>
+<!--			<scope>provided</scope>-->
 			<version>3.6.1.SP2</version>
 		</dependency>
 

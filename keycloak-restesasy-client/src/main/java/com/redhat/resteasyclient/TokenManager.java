@@ -15,7 +15,7 @@ public class TokenManager {
 	private static final String REALM = "master";
 	private static final String KEYCLOAK_ADM_USER = "admin";
 	private static final String KEYCLOAK_ADM_PASS = "q1w2e3r4!";
-	private static final String KEYCLOAK_HOST = "http://localhost:8180/auth";
+	private static final String KEYCLOAK_HOST = "http://localhost:8080/auth";
 	private static final String CLIENT_ID = "admin-cli";
 	
 	public static TokenManager getInstance() {
@@ -23,7 +23,7 @@ public class TokenManager {
 	}
 	
 	public String getToken() {
-		
+
 		ResteasyClient client = new ResteasyClientBuilder().connectionPoolSize(10).build();
 		ResteasyWebTarget target = client.target(UriBuilder.fromPath(KEYCLOAK_HOST));
 		TokenService tokenService = target.proxy(TokenService.class);
@@ -37,4 +37,9 @@ public class TokenManager {
 		
 		return accessTokenResponse.getToken();
 	}
+
+	public static void main(String[] args) {
+		System.out.println(TokenManager.getInstance().getToken());
+	}
+
 }
