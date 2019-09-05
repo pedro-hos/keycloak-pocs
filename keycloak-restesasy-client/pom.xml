@@ -15,6 +15,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<version.war.plugin>2.5</version.war.plugin>
 		<version.server.bom>7.2.0.GA</version.server.bom>
+		<resteasy.version>3.6.1.SP2</resteasy.version>
 	</properties>
 
 	<dependencyManagement>
@@ -55,12 +56,14 @@
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-jackson2-provider</artifactId>
 			<scope>provided</scope>
+			<version>3.6.1.SP2</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-client</artifactId>
 			<scope>provided</scope>
+			<version>3.6.1.SP2</version>
 		</dependency>
 
 	</dependencies>
