@@ -18,6 +18,37 @@
 		<resteasy.version>3.6.1.SP2</resteasy.version>
 	</properties>
 
+<!--	https://access.redhat.com/documentation/en-us/jboss_enterprise_application_platform_continuous_delivery/14/html/development_guide/using_maven_with_eap#configure_the_jboss_eap_maven_repository-->
+	<repositories>
+		<repository>
+			<id>jboss-eap-repository-group</id>
+			<name>JBoss EAP Maven Repository</name>
+			<url>https://maven.repository.redhat.com/ga/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jboss-eap-repository-group</id>
+			<name>JBoss EAP Maven Repository</name>
+			<url>https://maven.repository.redhat.com/ga/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
