@@ -49,7 +49,8 @@ public class LivrariaResource {
 		try {
 
 			Livro livro = livroService.vender("Bearer " + keycloakSecurityContext.getTokenString(), isbn, quantidade);
-
+		
+			//Livro livro = livroService.vender(isbn, quantidade);
 			Venda venda = new Venda();
 			venda.setIsbn(isbn);
 			venda.setQuantidade(quantidade);
