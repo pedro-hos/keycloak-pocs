@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+import org.jboss.logging.Logger;
 import org.keycloak.KeycloakSecurityContext;
 
 import br.com.jugvale.livraria.model.Livro;
@@ -24,6 +25,8 @@ import br.com.jugvale.livraria.service.LivroService;
 
 @Path("/api/livraria")
 public class LivrariaResource {
+	
+	Logger logger = Logger.getLogger(LivrariaResource.class);
 
 	@Inject
 	@RestClient
@@ -46,11 +49,13 @@ public class LivrariaResource {
 	@Transactional
 	public Livro vender(@PathParam("isbn") final String isbn, @PathParam("quantidade") final int quantidade) {
 
+		logger.info("Realizando venda de livros");
+		
 		try {
 
 			Livro livro = livroService.vender("Bearer " + keycloakSecurityContext.getTokenString(), isbn, quantidade);
-		
 			//Livro livro = livroService.vender(isbn, quantidade);
+			
 			Venda venda = new Venda();
 			venda.setIsbn(isbn);
 			venda.setQuantidade(quantidade);
@@ -70,6 +75,7 @@ public class LivrariaResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@RolesAllowed("gerente")
 	public Response buscaVendas() {
+		logger.info("Realizando busca de todos livros vendidos");
 		return Response.ok(Venda.listAll()).build();
 	}
 

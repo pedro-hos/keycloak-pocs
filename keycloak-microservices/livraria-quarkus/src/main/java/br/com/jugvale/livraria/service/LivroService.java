@@ -22,18 +22,12 @@ public interface LivroService {
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	List<Livro> buscaTodosLivros();
-	
+
+	//@HeaderParam("Authorization") String authHeaderValue,
+
 	@PUT
 	@Path("/remover/{isbn}/quantidade/{quantidade}")
 	@Produces(MediaType.APPLICATION_JSON)
 	Livro vender(@HeaderParam("Authorization") String authHeaderValue, @PathParam("isbn") final String isbn, @PathParam("quantidade") final int quantidade);
-	
-	/*
-	 * @PUT
-	 * 
-	 * @Path("/remover/{isbn}/quantidade/{quantidade}")
-	 * 
-	 * @Produces(MediaType.APPLICATION_JSON) Livro vender(@PathParam("isbn") final
-	 * String isbn, @PathParam("quantidade") final int quantidade);
-	 */
+
 }
