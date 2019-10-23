@@ -4,6 +4,7 @@ var selecionado;
 var dados = [];
 
 carregar();
+carregaVendas();
 
 function notAuthenticated() {
 	$('#_login').show();
@@ -23,7 +24,6 @@ function authenticated() {
 	$('#message').html("<h4>Olá " + keycloak.tokenParsed['preferred_username'] + "</h4>");
 	
 	if(keycloak.hasRealmRole('gerente')) {
-		carregaVendas();
 		$('#_vendas').show();
 	} else {
 		$('#_vendas').hide();
@@ -101,8 +101,10 @@ function vender() {
 		headers: {
 			"Authorization": "Bearer " + keycloak.token
 		}
-	}).done(carregar);
-	
+	}).done(function() {
+			carregar();
+			carregaVendas();
+		});
 }
 
 function limpar() {

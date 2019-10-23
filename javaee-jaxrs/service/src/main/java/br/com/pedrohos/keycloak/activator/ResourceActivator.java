@@ -7,5 +7,5 @@ import javax.ws.rs.core.Application;
  * @author pedro-hos
  *
  */
-@ApplicationPath("api")
+@ApplicationPath("/")
 public class ResourceActivator extends Application { }

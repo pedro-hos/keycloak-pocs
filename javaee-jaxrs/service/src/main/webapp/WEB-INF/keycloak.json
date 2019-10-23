@@ -4,5 +4,5 @@
   "auth-server-url": "http://localhost:8180/auth",
   "ssl-required": "external",
   "resource": "service-jaxrs",
-  "enable-cors": true
+  "confidential-port": 0
 }

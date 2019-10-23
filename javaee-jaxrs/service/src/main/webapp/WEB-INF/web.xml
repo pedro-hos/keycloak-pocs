@@ -9,7 +9,7 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>secured</web-resource-name>
-			<url-pattern>/api/hello/secured</url-pattern>
+			<url-pattern>/secured</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>user</role-name>
@@ -19,7 +19,7 @@
 	<security-constraint>
 		<web-resource-collection>
 			<web-resource-name>admin</web-resource-name>
-			<url-pattern>/api/hello/admin</url-pattern>
+			<url-pattern>/admin</url-pattern>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>admin</role-name>
