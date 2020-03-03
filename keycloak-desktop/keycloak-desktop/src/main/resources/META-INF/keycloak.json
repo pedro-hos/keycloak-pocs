@@ -1,0 +1,9 @@
+{
+  "realm": "master",
+  "auth-server-url": "http://localhost:8080/auth/",
+  "ssl-required": "external",
+  "resource": "desktop-app",
+  "public-client": true,
+  "use-resource-role-mappings": true,
+  "enable-pkce": true
+}
