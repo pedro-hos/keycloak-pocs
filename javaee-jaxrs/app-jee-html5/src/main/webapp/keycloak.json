@@ -1,8 +1,9 @@
 {
   "realm": "master",
-  "auth-server-url": "http://localhost:8180/auth",
+  "auth-server-url": "https://localhost:8543/auth",
   "ssl-required": "external",
   "resource": "app-html5",
   "public-client": true,
-  "confidential-port": 0
+  "confidential-port": 0,
+  "disable-trust-manager": true
 }

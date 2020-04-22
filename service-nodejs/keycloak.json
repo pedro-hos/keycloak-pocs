@@ -1,0 +1,9 @@
+{
+    "realm": "master",
+    "bearer-only": true,
+    "auth-server-url": "https://localhost:8543/auth",
+    "ssl-required": "external",
+    "resource": "node-app",
+    "confidential-port": 0,
+    "disable-trust-manager": true
+  }
