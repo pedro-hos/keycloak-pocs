@@ -36,7 +36,7 @@ public class MyUserStorageProvider implements UserStorageProvider, UserLookupPro
 			 logger.info("finding token ...");
 			 InitialContext ctx = new InitialContext();
 			 TokenManager provider = (TokenManager)ctx.lookup("java:global/user-provider-spi/TokenManager");
-			 logger.info("Token" + provider.getToken());
+			 logger.info("Token >>>>> " + provider.getToken());
 			
 		} catch (Exception e) {
 			logger.error("Fail");
