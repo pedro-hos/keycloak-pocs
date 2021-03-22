@@ -11,9 +11,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<version.server.bom>7.3.0.GA</version.server.bom>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-		<version.war.plugin>2.5</version.war.plugin>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+		<version.war.plugin>3.3.1</version.war.plugin>
 		<rh-sso.version>7.4.0.GA</rh-sso.version>
 	</properties>
 
@@ -124,7 +124,6 @@
 		<dependency>
 			<groupId>org.jboss.resteasy</groupId>
 			<artifactId>resteasy-client</artifactId>
-			<scope>provided</scope>
 		</dependency>
 
 		<dependency>

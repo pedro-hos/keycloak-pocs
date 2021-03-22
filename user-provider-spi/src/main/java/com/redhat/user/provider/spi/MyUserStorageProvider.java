@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Local;
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
+import javax.naming.InitialContext;
 
 import org.jboss.logging.Logger;
 import org.keycloak.credential.CredentialInput;
@@ -31,8 +32,11 @@ public class MyUserStorageProvider implements UserStorageProvider, UserLookupPro
 	private void init() {
 		
 		try {
-			logger.info("finding token ...");
-			logger.info("Token" + TokenManager.getInstance().getToken());
+			
+			 logger.info("finding token ...");
+			 InitialContext ctx = new InitialContext();
+			 TokenManager provider = (TokenManager)ctx.lookup("java:global/user-provider-spi/TokenManager");
+			 logger.info("Token" + provider.getToken());
 			
 		} catch (Exception e) {
 			logger.error("Fail");

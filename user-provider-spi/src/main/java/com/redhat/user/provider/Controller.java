@@ -1,9 +1,14 @@
 package com.redhat.user.provider;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
 public class Controller {
 	
-	public Controller() {
-		System.out.println(TokenManager.getInstance().getToken());
+	public Controller() throws NamingException {
+		 InitialContext ctx = new InitialContext();
+		 TokenManager provider = (TokenManager)ctx.lookup("java:global/user-provider-spi/TokenManager");
+		 System.out.println(provider.getToken());
 	}
 		
 }
