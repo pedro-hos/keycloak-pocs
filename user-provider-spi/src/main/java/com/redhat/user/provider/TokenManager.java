@@ -31,13 +31,7 @@ public class TokenManager {
 		
 		logger.info("Getting token ...");
 		
-		/*
-		 * ResteasyClient client = new
-		 * ResteasyClientBuilder().register(CustomJacksonProvider.class)
-		 * .connectionPoolSize(10) .build();
-		 */
-		
-		Client client = ClientBuilder.newClient();//.register(CustomJacksonProvider.class);
+		Client client = ClientBuilder.newClient();
 		
 		WebTarget target = client.target(UriBuilder.fromPath(KEYCLOAK_HOST));
 		ResteasyWebTarget rtarget = (ResteasyWebTarget)target;

@@ -15,6 +15,9 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<version.war.plugin>3.3.1</version.war.plugin>
 		<rh-sso.version>7.4.0.GA</rh-sso.version>
+		<maven.repository.protocol>https</maven.repository.protocol>
+		<maven.redhat.repository.url>${maven.repository.protocol}://maven.repository.redhat.com/ga/</maven.redhat.repository.url>
+		<maven.repository.product.url>${maven.repository.protocol}://download.devel.redhat.com/brewroot/repos/jb-eap-7.3-maven-build/latest/maven/</maven.repository.product.url>
 	</properties>
 
 	<dependencyManagement>

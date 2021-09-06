@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.pedrohos.example.keycloak</groupId>
+	<artifactId>simple-webapp</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<name>simple-webapp Maven Webapp</name>
+	<url>http://www.example.com</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<bootable.jar.maven.plugin.version>2.0.2.Final-redhat-00001</bootable.jar.maven.plugin.version>
+		<jboss.xp.galleon.feature.pack.version>2.0.0.GA-redhat-00006</jboss.xp.galleon.feature.pack.version>
+		<keycloak.feature.pack.version>9.0.14.redhat-00001</keycloak.feature.pack.version>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
+	</properties>
+
+	<repositories>
+		<repository>
+			<id>jboss</id>
+			<url>https://maven.repository.redhat.com/ga</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>jboss</id>
+			<url>https://maven.repository.redhat.com/ga</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.bom</groupId>
+				<artifactId>jboss-eap-jakartaee8</artifactId>
+				<version>7.4.0.GA</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-8.0</artifactId>
+			<type>pom</type>
+			<scope>provided</scope>
+			<version>1.0.1.Final-redhat-00002</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>simple-webapp</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-jar-maven-plugin</artifactId>
+				<version>${bootable.jar.maven.plugin.version}</version>
+				<configuration>
+
+					<context-root>false</context-root>
+
+					<!-- <cli-sessions>
+						<cli-session>
+							<script-files>
+								<script>scripts/configure-oidc.cli</script>
+							</script-files>
+						</cli-session>
+					</cli-sessions> -->
+
+					<feature-packs>
+						<feature-pack>
+							<location>org.jboss.eap:wildfly-galleon-pack:${jboss.xp.galleon.feature.pack.version}</location>
+						</feature-pack>
+						<feature-pack>
+							<location>org.jboss.sso:keycloak-adapter-galleon-pack:${keycloak.feature.pack.version}</location>
+						</feature-pack>
+					</feature-packs>
+					<layers>
+						<layer>datasources-web-server</layer>
+						<layer>keycloak-client-oidc</layer>
+					</layers>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>package</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

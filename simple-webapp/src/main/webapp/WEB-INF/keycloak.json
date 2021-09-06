@@ -1,0 +1,8 @@
+{
+  "realm": "demo",
+  "auth-server-url": "http://127.0.0.1:8180/auth/",
+  "ssl-required": "external",
+  "resource": "simple-webapp",
+  "public-client": true,
+  "confidential-port": 0
+}
