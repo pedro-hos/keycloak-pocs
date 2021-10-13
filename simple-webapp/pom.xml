@@ -82,13 +82,13 @@
 
 					<context-root>false</context-root>
 
-					<!-- <cli-sessions>
+					<cli-sessions>
 						<cli-session>
 							<script-files>
 								<script>scripts/configure-oidc.cli</script>
 							</script-files>
 						</cli-session>
-					</cli-sessions> -->
+					</cli-sessions>
 
 					<feature-packs>
 						<feature-pack>
