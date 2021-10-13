@@ -10,14 +10,18 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import br.com.pedrohos.keycloak.UserController;
+import br.com.pedrohos.keycloak.controller.UserControllerNotWorking;
+import br.com.pedrohos.keycloak.controller.UserControllerWorkaround;
 
 @Path("/")
 @Stateless
 public class HelloResource {
 	
 	@Inject
-	UserController userController;
+	UserControllerWorkaround userController;
+	
+	@Inject
+	UserControllerNotWorking userControllerNotWorking;
 	
 	@Context
 	private HttpServletRequest servletRequest;
@@ -33,10 +37,8 @@ public class HelloResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("secured")
 	public Response getSecured() {
-		
-		
 		userController.getKeycloakPrincipal(servletRequest);
-		
+		//userControllerNotWorking.getKeycloakPrincipal();
 		return Response.ok().entity(new Message("secured")).build();
 	}
 

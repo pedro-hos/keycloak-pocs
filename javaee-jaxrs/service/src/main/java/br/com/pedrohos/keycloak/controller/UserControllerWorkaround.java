@@ -1,4 +1,4 @@
-package br.com.pedrohos.keycloak;
+package br.com.pedrohos.keycloak.controller;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -15,9 +15,9 @@ import org.keycloak.representations.AccessToken;
  */
 
 @Stateless
-public class UserController {
+public class UserControllerWorkaround {
 	
-	private final Logger LOGGER = Logger.getLogger(UserController.class.getName());
+	private final Logger LOGGER = Logger.getLogger(UserControllerWorkaround.class.getName());
 
 	public void  getKeycloakPrincipal(HttpServletRequest servletRequest) {
 		
