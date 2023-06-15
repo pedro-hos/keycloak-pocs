@@ -10,6 +10,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.keycloak.KeycloakSecurityContext;
+
 import br.com.pedrohos.keycloak.controller.UserControllerNotWorking;
 import br.com.pedrohos.keycloak.controller.UserControllerWorkaround;
 
@@ -48,5 +50,15 @@ public class HelloResource {
 	public Response getAdmin() {
 		return Response.ok().entity(new Message("admin")).build();
 	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("sessionId")
+	public Response getSession() {
+		KeycloakSecurityContext context = (KeycloakSecurityContext) servletRequest.getAttribute(KeycloakSecurityContext.class.getName());
+		String sessionId = context.getToken().getSessionState();
+		return Response.ok().entity(new Message(sessionId)).build();
+	}
+	
 
 }

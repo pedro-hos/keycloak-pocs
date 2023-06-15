@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 var keycloak = new Keycloak();
-var serviceUrl = 'http://localhost:8380'
+var serviceUrl = 'http://localhost:8180/service'
 
 function notAuthenticated() {
     document.getElementById('not-authenticated').style.display = 'block';

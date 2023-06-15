@@ -1,9 +1,9 @@
 {
   "realm": "master",
-  "auth-server-url": "http://localhost:8180/auth",
+  "auth-server-url": "http://localhost:8080/auth/",
   "ssl-required": "external",
   "resource": "service-jaxrs",
   "public-client": true,
   "confidential-port": 0,
-  "disable-trust-manager": true
+  "enable-cors": true
 }
