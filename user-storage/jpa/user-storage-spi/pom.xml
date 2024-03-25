@@ -10,8 +10,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<version.server.bom>7.3.0.GA</version.server.bom>
-		<rh-sso.version>7.3.0.GA</rh-sso.version>
+		<version.server.bom>7.4.15.GA</version.server.bom>
+		<rh-sso.version>7.4.8.GA</rh-sso.version>
 		<version.compiler.maven.plugin>3.5.1</version.compiler.maven.plugin>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>

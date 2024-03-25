@@ -5,6 +5,7 @@ import java.util.Map;
 import org.jboss.logging.Logger;
 import org.keycloak.events.Event;
 import org.keycloak.events.EventListenerProvider;
+import org.keycloak.events.EventType;
 import org.keycloak.events.admin.AdminEvent;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.RealmModel;
@@ -38,6 +39,9 @@ public class SampleEventListenerProvider implements EventListenerProvider {
     @Override
     public void onEvent(Event event) {
         log.info("Event Occurred:" + toString(event));
+        if(EventType.IDENTITY_PROVIDER_LOGIN.equals(event.getType())) {
+        	log.info("Your rule here!!!!!");
+        }
     }
 
     @Override

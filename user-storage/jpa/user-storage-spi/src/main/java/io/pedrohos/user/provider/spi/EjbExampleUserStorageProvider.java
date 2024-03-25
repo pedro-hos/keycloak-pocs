@@ -20,7 +20,6 @@ import org.keycloak.component.ComponentModel;
 import org.keycloak.credential.CredentialInput;
 import org.keycloak.credential.CredentialInputUpdater;
 import org.keycloak.credential.CredentialInputValidator;
-import org.keycloak.credential.CredentialModel;
 import org.keycloak.models.GroupModel;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.models.RealmModel;
@@ -28,6 +27,7 @@ import org.keycloak.models.UserCredentialModel;
 import org.keycloak.models.UserModel;
 import org.keycloak.models.cache.CachedUserModel;
 import org.keycloak.models.cache.OnUserCache;
+import org.keycloak.models.credential.PasswordCredentialModel;
 import org.keycloak.storage.StorageId;
 import org.keycloak.storage.UserStorageProvider;
 import org.keycloak.storage.user.UserLookupProvider;
@@ -82,12 +82,12 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
 		return password;
 	}
 
-	public UserAdapter getUserAdapter(UserModel user) {
+	public UserAdapter getUserAdapter(UserModel user, RealmModel model) {
 		UserAdapter adapter = null;
 		
 		if (user instanceof CachedUserModel) {
 			logger.info("Getting user from cached user model");
-			adapter = (UserAdapter) ((CachedUserModel) user).getDelegateForUpdate();
+			adapter = (UserAdapter) getUserById(user.getId(), model);
 		} else {
 			logger.info("Getting user from DB (UserAdapter)");
 			adapter = (UserAdapter) user;
@@ -135,7 +135,7 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
 
 	@Override
 	public boolean supportsCredentialType(String credentialType) {
-		return CredentialModel.PASSWORD.equals(credentialType);
+		return PasswordCredentialModel.TYPE.equals(credentialType);
 	}
 
 	@Override
@@ -148,7 +148,7 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
 		}
 
 		UserCredentialModel cred = (UserCredentialModel) input;
-		UserAdapter adapter = getUserAdapter(user);
+		UserAdapter adapter = getUserAdapter(user, realm);
 		adapter.setPassword(cred.getValue());
 
 		return true;
@@ -161,16 +161,16 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
 			return;
 		}
 
-		getUserAdapter(user).setPassword(null);
+		getUserAdapter(user, realm).setPassword(null);
 
 	}
 
 	@Override
 	public Set<String> getDisableableCredentialTypes(RealmModel realm, UserModel user) {
 
-		if (getUserAdapter(user).getPassword() != null) {
+		if (getUserAdapter(user, realm).getPassword() != null) {
 			Set<String> set = new HashSet<>();
-			set.add(CredentialModel.PASSWORD);
+			set.add(PasswordCredentialModel.TYPE);
 			return set;
 		} else {
 			return Collections.emptySet();
@@ -269,8 +269,13 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
 		UserEntity entity = new UserEntity();
 		entity.setId(UUID.randomUUID().toString());
 		entity.setUsername(username);
-		em.persist(entity);
-		logger.info("added user: " + username);
+		try {
+			em.persist(entity);
+			logger.info("added user: " + username);
+		} catch (Exception e) {
+			logger.error("ERROR added user: " + username);
+			e.printStackTrace();
+		}
 		return new UserAdapter(session, realm, model, entity);
 	}
 
@@ -289,6 +294,7 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
 		logger.info("getUserById: " + id);
 		String persistenceId = StorageId.externalId(id);
 		UserEntity entity = em.find(UserEntity.class, persistenceId);
+		
 		if (entity == null) {
 			logger.info("could not find user by id: " + id);
 			return null;
