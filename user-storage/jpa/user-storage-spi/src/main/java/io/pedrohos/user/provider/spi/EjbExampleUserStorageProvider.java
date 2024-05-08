@@ -121,6 +121,7 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
 	@Override
 	public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {
 		
+		new String();
 		logger.info("Starting password validation.");
 		
 		if (!supportsCredentialType(input.getType()) || !(input instanceof UserCredentialModel)) {
@@ -269,6 +270,8 @@ public class EjbExampleUserStorageProvider implements UserStorageProvider,
 		UserEntity entity = new UserEntity();
 		entity.setId(UUID.randomUUID().toString());
 		entity.setUsername(username);
+		entity.setPhone("12999999999")
+
 		try {
 			em.persist(entity);
 			logger.info("added user: " + username);

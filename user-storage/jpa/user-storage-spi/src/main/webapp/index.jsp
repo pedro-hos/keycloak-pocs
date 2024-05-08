@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
+<%-- <%@page contentType="text/html" pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -13,4 +13,4 @@
 	<jsp:useBean id="controller" class="com.redhat.user.provider.Controller" scope="request" />
 
 </body>
-</html>
+</html> --%>
